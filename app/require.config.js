@@ -8,10 +8,11 @@
       underscore: '../assets/libs/underscore-min',
       backbone: '../assets/libs/backbone-min',
       marionette: '../assets/libs/marionette-min',
+      handlebars: '../assets/libs/handlebars',
+      cookies: '../assets/plugins/jquery.cookie',
 
-      cookies: '../assets/plugins/jquery.cookie'
-      //handlebars: '../libs/hbs/Handlebars',
-      //text: '../libs/require/text',
+      //Backbone Plugins
+      dotAttr: '../assets/plugins/backbone/model.dotAttr'
     },
     shim: {
       jquery: {
@@ -28,23 +29,28 @@
         deps: ['underscore', 'jquery'],
         exports: 'Backbone'
       },
+      dotAttr: {
+        deps: ['backbone', 'underscore']
+      },
       cookies: {
         deps: ["jquery"]
+      },
+      handlebars: {
+        exports: 'Handlebars'
       }
-      // handlebars: {
-      //   exports: 'Handlebars'
-      // }
     }
   });
 
 define([
+
   'jquery',
   'app.init',
   'app.router',
   'app.session'
-], function($, App, router, session) {
-  'use strict';
 
+], function($, App, router, session) {
+
+  'use strict';
   $(function() {
 
     App.Router = router;
